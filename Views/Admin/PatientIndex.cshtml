@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<PatientModel>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">PatientList</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="CreatePatient" class="btn btn-primary">Add New Patient</a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table table-bordered table-striped" style="width100%">
+    <thead>
+    <th>
+        FirstName
+    </th>
+    <th>
+        LastName
+    </th>
+    <th>PESEL</th>
+    <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+        <tr>
+            <td width="50%">@p.FirstName</td>
+            <td width="30%">@p.LastName</td>
+            <td width="50%">@p.PESEL</td>
+            <td class="text-center">
+                <a asp-action="EditPatient" asp-controller="Admin" asp-route-patientid="@p.Id" class="btn btn-danger">Edytuj</a>
+                <form asp-action="DeletePatient" asp-controller="Admin" asp-route-patientid="@p.Id" method="post">
+                    <input type="hidden" name="PatientID" value="@p.Id" />
+                    <button type="submit" class="btn btn-default">Delete</button>
+                </form>
+
+        </tr>
+
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<AppointmentModel> 
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">AppointmentList</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="CreateAppointment" class="btn btn-primary">Add New Appointment</a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table table-bordered table-striped" style="width100%">
+    <thead>
+    <th>
+        AppointmentDate
+    </th>
+    <th>
+        PatientId
+    </th>
+    <th>
+        DoctorId
+    </th>
+    <th>
+        Price
+    </th>
+    <th>
+        Description
+    </th>
+    <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td width="50%">@p.AppointmentDate</td>
+                <td width="30%">@p.PatientId</td>
+                <td width="30%">@p.DoctorId</td>
+                <td width="30%">@p.Price</td>
+                <td width="30%">@p.Description</td>
+                <td class="text-center">
+                    <a asp-action="EditAppointment" asp-controller="Admin" asp-route-Appointmentid="@p.Id" class="btn btn-danger">Edytuj</a>
+                    <form asp-action="DeleteAppointment" asp-controller="Admin" asp-route-Appointmentid="@p.Id" method="post">
+                        <input type="hidden" name="AppointmentID" value="@p.Id" />
+                        <button type="submit" class="btn btn-default">Delete</button>
+                    </form>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
