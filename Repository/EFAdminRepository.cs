@@ -15,7 +15,7 @@ namespace Gabinet_v2.Repository
             adminContext = admCtx;
         }
 
-        public IEnumerable<Doctor> Doctors => adminContext.Doctors;
+        public IQueryable<Doctor> Doctors => adminContext.Doctors;
 
         public void EditDoctor(Doctor doctor)
         {
@@ -54,7 +54,7 @@ namespace Gabinet_v2.Repository
 
         //------ Patient
 
-        public IEnumerable<PatientModel> Patients => adminContext.Patients;
+        public IQueryable<PatientModel> Patients => adminContext.Patients;
 
         public void EditPatient(PatientModel patient)
         {
@@ -94,7 +94,7 @@ namespace Gabinet_v2.Repository
 
         //------ appointment
 
-        public IEnumerable<AppointmentModel> Appointments => adminContext.Appointments;
+        public IQueryable<AppointmentModel> Appointments => adminContext.Appointments;
 
         public void EditAppointment(AppointmentModel appointment)
         {
@@ -136,7 +136,7 @@ namespace Gabinet_v2.Repository
 
         //------ assistant
 
-        public IEnumerable<AssistantModel> Assistants => adminContext.Assistants;
+        public IQueryable<AssistantModel> Assistants => adminContext.Assistants;
 
         public void EditAssistant(AssistantModel assistant)
         {

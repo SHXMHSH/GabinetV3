@@ -396,3 +396,4 @@ C:\Users\XXXX\source\repos\Gabinet_v2\Gabinet_v2\obj\Debug\net5.0\Razor\Views\Ad
 C:\Users\XXXX\source\repos\Gabinet_v2\Gabinet_v2\obj\Debug\net5.0\Razor\Views\Admin\AssistantIndex.cshtml.g.cs
 C:\Users\XXXX\source\repos\Gabinet_v2\Gabinet_v2\obj\Debug\net5.0\Razor\Views\Admin\EditAppointment.cshtml.g.cs
 C:\Users\XXXX\source\repos\Gabinet_v2\Gabinet_v2\obj\Debug\net5.0\Razor\Views\Admin\EditAssistant.cshtml.g.cs
+C:\Users\XXXX\source\repos\Gabinet_v2\Gabinet_v2\obj\Debug\net5.0\Razor\Views\Admin\PatientAppointments.cshtml.g.cs

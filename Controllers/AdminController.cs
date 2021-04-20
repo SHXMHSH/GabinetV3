@@ -1,7 +1,9 @@
-﻿using Gabinet_v2.Interfaces;
+﻿
+using Gabinet_v2.Interfaces;
 using Gabinet_v2.Models;
 using Gabinet_v2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,11 +90,19 @@ namespace Gabinet_v2.Controllers
         }
 
         //----------- Appointment
-        public IActionResult AppointmentIndex()
-        {
-            return View(adminRepository.Appointments);
-        }
+        //public IActionResult AppointmentIndex()
+        //{
+        //    return View(adminRepository.Appointments);
+        //}
 
+        public async Task<IActionResult> AppointmentIndex()
+        {
+            var appointments = adminRepository.Appointments
+                .Include(c => c.Patient)
+                .Include(c => c.Doctor)
+                .AsNoTracking();
+            return View(await appointments.ToListAsync());
+        }
         public ViewResult EditAppointment(int AppointmentID) => View(adminRepository.Appointments.FirstOrDefault(p => p.Id == AppointmentID));
         [HttpPost]
         public IActionResult EditAppointment(AppointmentModel appointment)
@@ -153,10 +163,6 @@ namespace Gabinet_v2.Controllers
                 TempData["message"] = $"Deleted succesfully {deletedAssistant.LastName}.";
             }
             return RedirectToAction(nameof(AssistantIndex));
-        }
-        public ActionResult ViewAppointments()
-        {
-            adminRepository.Appointments.SingleOrDefault(x => x.PatientId == PatientModel.)
         }
 
 

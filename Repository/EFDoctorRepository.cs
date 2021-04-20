@@ -14,7 +14,7 @@ namespace Gabinet_v2.Repository
         {
             context = ctx;
         }
-        public IEnumerable<Doctor> Doctors => context.Doctors;
+        public IQueryable<Doctor> Doctors => context.Doctors;
 
         public void EditDoctor(Doctor doctor)
         {

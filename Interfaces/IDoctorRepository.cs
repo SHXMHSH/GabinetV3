@@ -8,7 +8,7 @@ namespace Gabinet_v2.Interfaces
 {
     public interface IDoctorRepository
     {
-        IEnumerable<Doctor> Doctors { get; }
+        IQueryable<Doctor> Doctors { get; }
         void EditDoctor(Doctor model);
         void SaveDoctor(Doctor model);
         Doctor DeleteDoctor(int DoctorID);

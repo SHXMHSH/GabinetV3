@@ -8,7 +8,7 @@ namespace Gabinet_v2.Interfaces
 {
     public class IAppointmentRepository
     {
-        IEnumerable<AppointmentModel> GetAppointmentModels { get; }
+       
 
     }
 }

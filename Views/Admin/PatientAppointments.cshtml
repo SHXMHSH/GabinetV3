@@ -1,5 +1,121 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Gabinet_v2.Models.AppointmentModel>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<h1>Appointments</h1>
+
+<p>
+    <a class="btn btn-outline-info" asp-action="Create">Add</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-outline-info" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@*@model IQueryable<AppointmentModel>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">AppointmentList</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="CreateAppointment" class="btn btn-primary">Add New Appointment</a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table class="table table-bordered table-striped" style="width100%">
+    <thead>
+    <th>
+        AppointmentDate
+    </th>
+    <th>
+        PatientId
+    </th>
+    <th>
+        DoctorId
+    </th>
+    <th>
+        Price
+    </th>
+    <th>
+        Description
+    </th>
+    <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td width="50%">@p.AppointmentDate</td>
+                <td width="30%">@p.PatientId</td>
+                <td width="30%">@p.DoctorId</td>
+                <td width="30%">@p.Price</td>
+                <td width="30%">@p.Description</td>
+                <td class="text-center">
+                    <a asp-action="EditAppointment" asp-controller="Admin" asp-route-Appointmentid="@p.Id" class="btn btn-danger">Edytuj</a>
+                    <form asp-action="DeleteAppointment" asp-controller="Admin" asp-route-Appointmentid="@p.Id" method="post">
+                        <input type="hidden" name="AppointmentID" value="@p.Id" />
+                        <button type="submit" class="btn btn-default">Delete</button>
+                    </form>
+
+            </tr>
+
+        }
+    </tbody>
+</table>*@
+
+

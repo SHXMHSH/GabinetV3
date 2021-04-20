@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<PatientModel>
+@model IQueryable<PatientModel>
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -15,6 +15,9 @@
 <br />
 <table class="table table-bordered table-striped" style="width100%">
     <thead>
+        <th>
+        ID
+    </th>
     <th>
         FirstName
     </th>
@@ -29,11 +32,13 @@
         @foreach (var p in Model)
         {
         <tr>
+            <td width="50%">@p.Id</td>
             <td width="50%">@p.FirstName</td>
             <td width="30%">@p.LastName</td>
             <td width="50%">@p.PESEL</td>
             <td class="text-center">
                 <a asp-action="EditPatient" asp-controller="Admin" asp-route-patientid="@p.Id" class="btn btn-danger">Edytuj</a>
+                <a asp-action="PatientAppointments" asp-controller="Admin" asp-route-id="@p.Id">appointments</a>
                 <form asp-action="DeletePatient" asp-controller="Admin" asp-route-patientid="@p.Id" method="post">
                     <input type="hidden" name="PatientID" value="@p.Id" />
                     <button type="submit" class="btn btn-default">Delete</button>
