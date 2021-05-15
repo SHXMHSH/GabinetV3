@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Session;
 
 namespace Gabinet_v2
 {
@@ -33,6 +34,14 @@ namespace Gabinet_v2
             services.AddTransient<IDoctorRepository, EFDoctorRepository>();
             services.AddTransient<IAdminRepository, EFAdminRepository>();
             services.AddControllersWithViews();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +63,7 @@ namespace Gabinet_v2
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

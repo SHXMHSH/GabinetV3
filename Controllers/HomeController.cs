@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Gabinet_v2.Controllers
 {
@@ -20,11 +21,18 @@ namespace Gabinet_v2.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("Test", "Session Value");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            ViewBag.sessionv = HttpContext.Session.GetString("Test");
             return View();
         }
 
